@@ -1,0 +1,11 @@
+{
+  "name": "bmbrain",
+  "url" : "https://github.com/chleskowitz/bmbrain",
+  "license": "MIT",
+  "tags": [],
+  "description": "A cross-platform game engine for Haxe, targeting niche platforms.",
+  "version": "1.0.0",
+  "classPath": "src/",
+  "releasenote": "",
+  "contributors": ["TXSSER4CT"]
+}
