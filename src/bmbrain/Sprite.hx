@@ -58,7 +58,7 @@ class Sprite extends Obj {
 
             var sprArr:Array<C2D_Sprite> = [];
             for (i in 0...Std.parseInt(splitted[2])) {
-                var spr:C2D_Sprite = spr(splitted[1]+".t3x", i);
+                var spr:C2D_Sprite = spr("romfs:/"+splitted[1]+".t3x", i);
                 sprArr.push(spr);
             }
 
