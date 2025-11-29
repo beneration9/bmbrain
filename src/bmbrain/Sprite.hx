@@ -3,6 +3,10 @@ import bmbrain.Obj;
 import cxx.Char;
 import cxx.Const;
 
+#if flixel
+import flixel.FlxSprite;
+#end
+
 #if threeds
 @:cppFileCode('C2D_Sprite getSpr(std::string sheetPath, int i) {
     C2D_Sprite spr;
@@ -31,6 +35,11 @@ class Sprite extends Obj {
         #if threeds
         this.spritesheets = new Map<String, Array<C2D_Sprite>>();
         #end
+
+        #if flixel
+        this.spritesheets = new Map<String, Array<FlxSprite>>();
+        #end
+
         this.frm = 0;
         this.delay = delay;
         this.delayCounter = 0;
@@ -50,6 +59,23 @@ class Sprite extends Obj {
             var sprArr:Array<C2D_Sprite> = [];
             for (i in 0...Std.parseInt(splitted[2])) {
                 var spr:C2D_Sprite = spr(splitted[1], i);
+                sprArr.push(spr);
+            }
+
+            this.spritesheets.set(splitted[0], sprArr);
+        }
+        #end
+
+        #if flixel
+        var lines = Assets.getText("assets/data/"+path);
+        for (line in lines.split("\n")) {
+            var splitted = line.split("?");
+
+            var sprArr:Array<FlxSprite> = [];
+            for (i in 0...Std.parseInt(splitted[2])) {
+                var spr:FlxSprite = new FlxSprite();
+                spr.loadGraphic("assets/images/bmbrain/"+splitted[1]);
+                spr.animation.addByIndices(splitted[0], [i], 0, false);
                 sprArr.push(spr);
             }
 
@@ -79,6 +105,13 @@ class Sprite extends Obj {
         }
         this.delayCounter = 0;
         this.frm++;
+        #end
+
+        #if flixel
+        var sprArr = this.spritesheets.get(this.activeSheet);
+        spr.x = this.x;
+        spr.y = this.y;
+        spr.draw();
         #end
     }
     

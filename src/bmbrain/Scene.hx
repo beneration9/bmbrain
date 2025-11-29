@@ -1,6 +1,12 @@
 package bmbrain;
 import bmbrain.Obj;
 
+#if flixel
+import sys.io.File;
+import sys.FileSystem;
+import flixel.util.FlxAssets as Assets;
+#end
+
 class Scene extends Obj {
     public var objects:Array<Obj>;
 
@@ -15,6 +21,10 @@ class Scene extends Obj {
         while ((bytesRead = fread(buffer, 1, sizeof(buffer), file)) > 0) {
             lines.append(buffer, bytesRead);
         }');
+        #end
+
+        #if flixel
+        lines = Assets.getText("assets/data/bmbrain/"+path);
         #end
 
         for (line in lines.split("\n")) {
