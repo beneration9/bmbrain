@@ -45,6 +45,7 @@ class Sprite extends Obj {
         this.delayCounter = 0;
 
         #if threeds
+        path = "romfs:/"+path;
         untyped __cpp__('FILE* file = fopen(path.c_str(), "r");');
         var lines = "";
         untyped __cpp__('char buffer[1024];
@@ -67,7 +68,8 @@ class Sprite extends Obj {
         #end
 
         #if flixel
-        var lines = Assets.getText("assets/data/"+path);
+        path = "assets/data/bmbrain/"+path;
+        var lines = Assets.getText("assets/data/bmbrain/"+path);
         for (line in lines.split("\n")) {
             var splitted = line.split("?");
 
