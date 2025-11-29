@@ -27,7 +27,7 @@ class Sprite extends Obj {
     private var spritesheets:Map<String, Array<C2D_Sprite>>;
     #end
     #if flixel
-    private var spritesheets:Map<String, Array<FlxSprite>>;
+    private var spritesheets:Map<String, FlxSprite>;
     #end
     private var activeSheet:String;
     public var frm:Int;
@@ -44,7 +44,7 @@ class Sprite extends Obj {
         #end
 
         #if flixel
-        this.spritesheets = new Map<String, Array<FlxSprite>>();
+        this.spritesheets = new Map<String, FlxSprite>();
         #end
 
         this.frm = 0;
@@ -76,19 +76,21 @@ class Sprite extends Obj {
 
         #if flixel
         path = "assets/data/bmbrain/"+path;
-        var lines = Assets.getText("assets/data/bmbrain/"+path);
+        var lines = Assets.getText(path);
         for (line in lines.split("\n")) {
             var splitted = line.split("?");
 
-            var sprArr:Array<FlxSprite> = [];
+            var spr:FlxSprite = new FlxSprite();
             for (i in 0...Std.parseInt(splitted[2])) {
-                var spr:FlxSprite = new FlxSprite();
                 spr.loadGraphic("assets/images/bmbrain/"+splitted[1]+".png");
-                spr.animation.addByIndices(splitted[0], [i], 0, false);
-                sprArr.push(spr);
+                var indices = [];
+                 for (j in 0...Std.parseInt(splitted[2])) {
+                    indices.push(j);
+                }
+                spr.animation.addByIndices(splitted[0], splitted[0], indices, ".png");
             }
 
-            this.spritesheets.set(splitted[0], sprArr);
+            this.spritesheets.set(splitted[0], spr);
         }
         #end
     }
@@ -117,7 +119,7 @@ class Sprite extends Obj {
         #end
 
         #if flixel
-        var sprArr = this.spritesheets.get(this.activeSheet);
+        var spr = this.spritesheets.get(this.activeSheet);
         spr.x = this.x;
         spr.y = this.y;
         spr.draw();
