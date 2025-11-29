@@ -22,6 +22,9 @@ class Sprite extends Obj {
     #if threeds
     private var spritesheets:Map<String, Array<C2D_Sprite>>;
     #end
+    #if flixel
+    private var spritesheets:Map<String, Array<FlxSprite>>;
+    #end
     private var activeSheet:String;
     public var frm:Int;
     public var delay:Float;
