@@ -58,7 +58,7 @@ class Sprite extends Obj {
 
             var sprArr:Array<C2D_Sprite> = [];
             for (i in 0...Std.parseInt(splitted[2])) {
-                var spr:C2D_Sprite = spr(splitted[1], i);
+                var spr:C2D_Sprite = spr(splitted[1]+".t3x", i);
                 sprArr.push(spr);
             }
 
@@ -74,7 +74,7 @@ class Sprite extends Obj {
             var sprArr:Array<FlxSprite> = [];
             for (i in 0...Std.parseInt(splitted[2])) {
                 var spr:FlxSprite = new FlxSprite();
-                spr.loadGraphic("assets/images/bmbrain/"+splitted[1]);
+                spr.loadGraphic("assets/images/bmbrain/"+splitted[1]+".png");
                 spr.animation.addByIndices(splitted[0], [i], 0, false);
                 sprArr.push(spr);
             }
