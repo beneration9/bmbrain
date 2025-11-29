@@ -122,6 +122,7 @@ class Sprite extends Obj {
         var spr = this.spritesheets.get(this.activeSheet);
         spr.x = this.x;
         spr.y = this.y;
+        spr.scale.set(this.scale, this.scale);
         spr.draw();
         #end
     }
