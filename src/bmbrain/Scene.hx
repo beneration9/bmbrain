@@ -4,7 +4,7 @@ import bmbrain.Obj;
 #if flixel
 import sys.io.File;
 import sys.FileSystem;
-import flixel.util.FlxAssets as Assets;
+import lime.utils.Assets;
 #end
 
 class Scene extends Obj {
