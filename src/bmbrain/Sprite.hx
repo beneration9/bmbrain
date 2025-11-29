@@ -1,10 +1,14 @@
 package bmbrain;
 import bmbrain.Obj;
+
+#if threeds
 import cxx.Char;
 import cxx.Const;
+#end
 
 #if flixel
 import flixel.FlxSprite;
+import lime.utils.Assets;
 #end
 
 #if threeds
