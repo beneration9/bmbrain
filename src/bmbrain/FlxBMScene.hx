@@ -12,13 +12,19 @@ class FlxBMScene extends FlxSprite
 
 	public var dt:Float = 0;
 
-	public function new(path:String)
+	public function new(scn:Scene)
 	{
 		super();
-		this.scene = new Scene(path);
+		this.scene = scn;
 		ThreeDMath.camX = 0;
 		ThreeDMath.camY = 0;
 		ThreeDMath.camZ = 0;
+	}
+
+	public static function fromPath(path:String):FlxBMScene
+	{
+		var scn = new Scene(path);
+		return new FlxBMScene(scn);
 	}
 
 	override public function update(elapsed:Float):Void
