@@ -8,6 +8,7 @@ import cxx.Const;
 
 #if flixel
 import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
 import lime.utils.Assets;
 #end
 
@@ -81,15 +82,9 @@ class Sprite extends Obj {
             var splitted = line.split("?");
 
             var spr:FlxSprite = new FlxSprite();
-            for (i in 0...Std.parseInt(splitted[2])) {
-                spr.loadGraphic("assets/images/bmbrain/"+splitted[1]+".png");
-                var indices = [];
-                 for (j in 0...Std.parseInt(splitted[2])) {
-                    indices.push(j);
-                }
-                spr.animation.addByIndices(splitted[0], splitted[0], indices, ".png");
-            }
-
+            spr.frames = FlxAtlasFrames.fromSparrow("assets/images/bmbrain/"+splitted[1]+".png", "assets/images/bmbrain/"+splitted[1]+".xml");
+            spr.animation.addByPrefix(splitted[0], splitted[0], 24, true);
+            spr.animation.play(splitted[0]);
             this.spritesheets.set(splitted[0], spr);
         }
         #end
