@@ -2,8 +2,6 @@ package bmbrain;
 import bmbrain.Obj;
 
 #if flixel
-import sys.io.File;
-import sys.FileSystem;
 import lime.utils.Assets;
 #end
 
