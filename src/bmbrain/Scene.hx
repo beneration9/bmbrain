@@ -7,6 +7,7 @@ import lime.utils.Assets;
 
 class Scene extends Obj {
     public var objects:Array<Obj>;
+    public var lines:String;
 
     public function new(path:String) {
         this.objects = [];
@@ -38,6 +39,8 @@ class Scene extends Obj {
                     
             }
         }
+
+        this.lines = lines;
     }
 
     public override function start() {
