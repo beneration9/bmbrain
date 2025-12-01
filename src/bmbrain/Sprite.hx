@@ -83,7 +83,7 @@ class Sprite extends Obj {
 
             var spr:FlxSprite = new FlxSprite();
             spr.frames = FlxAtlasFrames.fromSparrow("assets/images/bmbrain/"+splitted[1]+".png", "assets/images/bmbrain/"+splitted[1]+".xml");
-            spr.animation.addByPrefix(splitted[0], splitted[0], 24, true);
+            spr.animation.addByPrefix(splitted[0], splitted[0], 1/delay, true);
             spr.animation.play(splitted[0]);
             this.spritesheets.set(splitted[0], spr);
         }
