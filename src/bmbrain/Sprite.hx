@@ -118,6 +118,14 @@ class Sprite extends Obj {
         spr.x = this.x;
         spr.y = this.y;
         spr.scale.set(this.scale, this.scale);
+
+        this.delayCounter += dt;
+        if (this.delayCounter < this.delay) {
+            return;
+        }
+        this.delayCounter = 0;
+        this.frm++;
+
         spr.draw();
         #end
     }
